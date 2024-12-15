@@ -44,10 +44,12 @@ function createServer() {
     fs.readFile(`public/${path}`, (err, data) => {
       if (!err) {
         res.end(data);
+
+        return;
       }
 
       res.statusCode = 404;
-      res.end();
+      res.end(err.message);
     });
   });
 
